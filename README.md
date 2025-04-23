@@ -1,4 +1,84 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Mercafacil - Aplicativo de Supermercado
+
+Um aplicativo mobile simples usando React Native que simula um pequeno aplicativo de pedidos para supermercado.
+
+## 🚀 Funcionalidades
+
+- Lista de produtos com busca em tempo real
+- Detalhes do produto
+- Carrinho de compras com gerenciamento de quantidade
+- Cálculo automático do valor total
+
+## 📋 Pré-requisitos
+
+- Node.js (versão 18 ou superior)
+- npm ou yarn
+- React Native CLI
+- Xcode (para iOS)
+- Android Studio (para Android)
+
+## 🔧 Instalação
+
+1. Clone o repositório:
+```bash
+git clone https://github.com/seu-usuario/mercafacil.git
+cd mercafacil
+```
+
+2. Instale as dependências:
+```bash
+npm install
+# ou
+yarn install
+```
+
+3. Instale as dependências do iOS (apenas para macOS):
+```bash
+cd ios && pod install && cd ..
+```
+
+## 🏃 Executando o Projeto
+
+### iOS
+```bash
+npm run ios
+# ou
+yarn ios
+```
+
+### Android
+```bash
+npm run android
+# ou
+yarn android
+```
+
+## 📱 Telas
+
+### Tela de Produtos
+- Lista de produtos com busca em tempo real
+- Exibição de nome, preço e imagem do produto
+
+### Tela de Detalhes
+- Informações detalhadas do produto
+- Botão para adicionar ao carrinho
+
+### Tela do Carrinho
+- Lista de itens adicionados
+- Gerenciamento de quantidade
+- Remoção de itens
+- Cálculo do valor total
+
+## 🛠️ Tecnologias Utilizadas
+
+- React Native
+- React Navigation
+- TypeScript
+- Context API para gerenciamento de estado
+
+## 📝 Licença
+
+Este projeto está sob a licença MIT.
 
 # Getting Started
 
@@ -66,7 +146,7 @@ This is one way to run your app — you can also build it directly from Android 
 
 Now that you have successfully run the app, let's make changes!
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
 
 When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
 
