@@ -9,8 +9,15 @@ interface ProductCardProps {
 
 export function ProductCard({ product, onPress }: ProductCardProps) {
   return (
-    <TouchableOpacity style={styles.container} onPress={onPress}>
-      <Image source={{ uri: product.image }} style={styles.image} />
+    <TouchableOpacity
+      style={styles.container}
+      onPress={onPress}
+      testID="product-card">
+      <Image
+        source={{ uri: product.image }}
+        style={styles.image}
+        testID="product-image"
+      />
       <View style={styles.infoContainer}>
         <Text style={styles.name} numberOfLines={2}>
           {product.name}
