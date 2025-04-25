@@ -35,6 +35,7 @@ yarn install
 3. Execute o projeto:
 ```bash
 # Para iOS
+cd ios && pod install && cd ..
 yarn ios
 
 # Para Android
