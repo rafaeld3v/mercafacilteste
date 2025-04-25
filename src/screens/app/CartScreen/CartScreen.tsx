@@ -14,6 +14,11 @@ import { useCart } from "../../../context/index";
 export function CartScreen({}: AppScreenProps<"Cart">) {
   const { items, removeFromCart, updateQuantity, getTotal } = useCart();
 
+  console.log(items);
+
+  const buttonDisabled = items.length <= 0;
+  console.log(buttonDisabled);
+
   const renderItem = ({ item }: any) => (
     <View style={styles.itemContainer}>
       <View style={styles.itemInfo}>
@@ -53,7 +58,10 @@ export function CartScreen({}: AppScreenProps<"Cart">) {
         <Text style={styles.totalText}>Total: R$ {getTotal().toFixed(2)}</Text>
       </View>
       <View style={styles.totalContainer}>
-        <TouchableOpacity style={styles.button} onPress={() => {}}>
+        <TouchableOpacity
+          style={[styles.button, buttonDisabled && styles.buttonDisabled]}
+          onPress={() => {}}
+          disabled={buttonDisabled}>
           <Text style={styles.buttonText}>Finalizar compra</Text>
         </TouchableOpacity>
       </View>
@@ -136,6 +144,9 @@ const styles = StyleSheet.create({
     padding: 16,
     borderRadius: 8,
     alignItems: "center",
+  },
+  buttonDisabled: {
+    backgroundColor: "#95a5a6",
   },
   buttonText: {
     color: "#fff",
