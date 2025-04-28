@@ -9,15 +9,15 @@ import {
 } from "react-native";
 
 import { AppScreenProps } from "@routes";
+import { useAppSafeArea } from "@hooks";
 import { useCart } from "../../../context/index";
 
 export function CartScreen({}: AppScreenProps<"Cart">) {
   const { items, removeFromCart, updateQuantity, getTotal } = useCart();
 
-  console.log(items);
-
   const buttonDisabled = items.length <= 0;
-  console.log(buttonDisabled);
+
+  const { bottom } = useAppSafeArea();
 
   const renderItem = ({ item }: any) => (
     <View style={styles.itemContainer}>
@@ -47,13 +47,15 @@ export function CartScreen({}: AppScreenProps<"Cart">) {
   );
 
   return (
-    <SafeAreaView style={styles.container}>
-      <FlatList
-        data={items}
-        renderItem={renderItem}
-        keyExtractor={item => item.id.toString()}
-        contentContainerStyle={styles.listContainer}
-      />
+    <SafeAreaView style={[styles.container, { paddingBottom: bottom }]}>
+      <View style={styles.content}>
+        <FlatList
+          data={items}
+          renderItem={renderItem}
+          keyExtractor={item => item.id.toString()}
+          contentContainerStyle={styles.listContainer}
+        />
+      </View>
       <View style={styles.totalContainer}>
         <Text style={styles.totalText}>Total: R$ {getTotal().toFixed(2)}</Text>
       </View>
@@ -71,6 +73,10 @@ export function CartScreen({}: AppScreenProps<"Cart">) {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+    backgroundColor: "#fff",
+  },
+  content: {
     flex: 1,
     backgroundColor: "#f5f5f5",
   },
@@ -129,7 +135,8 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   totalContainer: {
-    padding: 16,
+    paddingVertical: 16,
+    paddingHorizontal: 24,
     backgroundColor: "#fff",
     borderTopWidth: 1,
     borderTopColor: "#ddd",
@@ -146,7 +153,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   buttonDisabled: {
-    backgroundColor: "#95a5a6",
+    backgroundColor: "#c1c2c3",
   },
   buttonText: {
     color: "#fff",

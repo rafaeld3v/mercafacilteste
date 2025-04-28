@@ -6,11 +6,14 @@ import {
   SafeAreaView,
   TouchableOpacity,
   Image,
+  Platform,
+  View,
 } from "react-native";
 
 import { products } from "@api";
 import { ProductCard } from "@components";
 import { AppScreenProps } from "@routes";
+import { useAppSafeArea } from "@hooks";
 
 import CartPNG from "../../../assets/images/cart.png";
 
@@ -31,8 +34,10 @@ export function ProductListScreen({
     navigation.navigate("Cart");
   };
 
+  const { bottom } = useAppSafeArea();
+
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={[styles.container, { paddingBottom: bottom }]}>
       <TextInput
         style={styles.searchInput}
         placeholder="Buscar produtos..."
@@ -44,6 +49,7 @@ export function ProductListScreen({
         data={filteredProducts}
         keyExtractor={item => item.id.toString()}
         numColumns={2}
+        columnWrapperStyle={styles.columnWrapper}
         renderItem={({ item }) => (
           <ProductCard
             product={item}
@@ -66,20 +72,25 @@ const styles = StyleSheet.create({
     backgroundColor: "#f5f5f5",
   },
   searchInput: {
+    marginVertical: 16,
+    marginHorizontal: 24,
     backgroundColor: "#fff",
-    padding: 10,
-    margin: 10,
+    padding: 16,
     borderRadius: 8,
     borderWidth: 1,
     borderColor: "#ddd",
   },
   listContainer: {
-    padding: 8,
+    paddingHorizontal: 24,
+  },
+  columnWrapper: {
+    justifyContent: "space-between",
+    marginBottom: 16,
   },
   cartButton: {
     position: "absolute",
     bottom: 40,
-    right: 20,
+    right: 24,
     backgroundColor: "#4CAF50",
     width: 56,
     height: 56,

@@ -9,6 +9,7 @@ import {
 } from "react-native";
 
 import { AppScreenProps } from "@routes";
+import { useAppSafeArea } from "@hooks";
 import { useCart } from "../../../context/index";
 
 export function ProductDetailsScreen({
@@ -23,17 +24,24 @@ export function ProductDetailsScreen({
     navigation.navigate("Cart");
   };
 
+  const { bottom } = useAppSafeArea();
+
   return (
-    <SafeAreaView style={styles.container}>
-      <Image
-        source={{ uri: product.image }}
-        style={styles.image}
-        resizeMode="contain"
-      />
+    <SafeAreaView style={[styles.container, { paddingBottom: bottom }]}>
+      <View style={styles.imageContainer}>
+        <Image
+          source={{ uri: product.image }}
+          style={styles.image}
+          resizeMode="contain"
+        />
+      </View>
       <View style={styles.infoContainer}>
         <Text style={styles.name}>{product.name}</Text>
         <Text style={styles.price}>R$ {product.price.toFixed(2)}</Text>
         <Text style={styles.description}>{product.description}</Text>
+      </View>
+
+      <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.button} onPress={handleAddToCart}>
           <Text style={styles.buttonText}>Adicionar ao Carrinho</Text>
         </TouchableOpacity>
@@ -45,17 +53,27 @@ export function ProductDetailsScreen({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f5f5f5",
+    backgroundColor: "#fff",
+  },
+  imageContainer: {
+    paddingVertical: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: "#c1c2c3",
   },
   image: {
     width: "100%",
     height: 300,
-    paddingVertical: 20,
+    backgroundColor: "#fff",
   },
   infoContainer: {
     padding: 16,
     backgroundColor: "#fff",
     flex: 1,
+  },
+  buttonContainer: {
+    paddingVertical: 16,
+    paddingHorizontal: 24,
+    backgroundColor: "#fff",
   },
   name: {
     fontSize: 24,

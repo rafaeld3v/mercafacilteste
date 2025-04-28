@@ -20,12 +20,13 @@ export function AppStack() {
         /* headerShown: false, */
         fullScreenGestureEnabled: true,
         headerStyle: {
-          backgroundColor: "#2ecc71",
+          backgroundColor: "#002040",
         },
         headerTintColor: "#fff",
         headerTitleStyle: {
           fontWeight: "bold",
         },
+        headerTitleAlign: "center",
         headerBackButtonDisplayMode: "minimal",
       }}>
       <Stack.Screen
